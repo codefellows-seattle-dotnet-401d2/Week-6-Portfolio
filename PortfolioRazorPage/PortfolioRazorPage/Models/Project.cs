@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PortfolioRazorPage.Models
 {
-    public class Projects
+    public class Project
     {
         public int Id { get; set; }
         public string Name { get; set; }
