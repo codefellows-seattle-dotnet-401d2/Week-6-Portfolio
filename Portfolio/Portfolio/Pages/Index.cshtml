@@ -1,5 +1,20 @@
-﻿@pages
+﻿@page
+@using Portfolio.Models
+@inject IProjectServices ProjectServices
 
+@{ 
+    var useMe = await ProjectServices.GEtAllAsync();
+}
 <h1>Andres Portfolio</h1>
 
-<h2></h2>
+<h2>Andres is ASP.NET C# Software Developer with 14 years of military service. </h2>
+
+<<div class="container">
+    <div class="row">
+        @foreach (var proj in projects)
+        {
+
+
+        }
+    </div>
+</div>
