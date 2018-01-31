@@ -362,6 +362,9 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
+# App settings including constring
+Week6/appsettings.json
+
 ### VisualStudio Patch ###
 # By default, sensitive information, such as encrypted password
 # should be stored in the .pubxml.user file.
