@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Portfolio.Models;
 
 namespace Portfolio
 {
@@ -16,6 +17,11 @@ namespace Portfolio
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddScoped<IProjectServices, ProjectServices>();
+
+            //this is where we tell the appliction to use the class as the middle man. 
+            //this is part of the code
             //services.AddScoped<Iinterface, interface it is referencing>();
         }
 
