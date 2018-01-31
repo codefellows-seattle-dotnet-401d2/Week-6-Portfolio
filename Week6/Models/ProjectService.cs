@@ -9,12 +9,11 @@ namespace Week6.Models
 {
     public class ProjectService : IProjectService
     {
-        private readonly ProjectDbContext _context { get; set; }
+        private ProjectDbContext _context { get; set; }
 
         public ProjectService()
         {
-            DbContextOptions<ProjectDbContext> options = new DbContextOptionsBuilder<ProjectDbContext>()
-                //################################### SOME STUFF NEEDS TO GO HERE!
+            DbContextOptions<ProjectDbContext> options = new DbContextOptionsBuilder<ProjectDbContext>().Options;
             _context = new ProjectDbContext(options);
         }
 
@@ -23,7 +22,7 @@ namespace Week6.Models
             _context = context;
         }
 
-        public Task GetAll()
+        public Task GetAllAsync()
         {
             throw new NotImplementedException();
         }
