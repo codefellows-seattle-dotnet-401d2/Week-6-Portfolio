@@ -33,7 +33,16 @@ completed documentation and tests.
 - Deploy to Azure. Provide your link in your Readme. (Name it something intuitive like AmandaIversonPortfolio.azurewebsites.net)
 
 ### Day 2
-TBD
+Continue Building out your portfolio. In this branch, you should complete:
+	- Complete your service class with all the calls to the database completed
+	- Install Bootstrap
+	- Add a new details landing page that shows the details of your 'item'
+	- Decorate your home page and your landing page with CSS
+	- Your home page should should show all the initial data in your database
+	- Details page should show the individual details of the item that was selected
+	- Use Taghelpers where approrpriate
+	- Add a layout page to share a template
+	- **Comment, Comment, Comment**
 
 
 ### Day 3
