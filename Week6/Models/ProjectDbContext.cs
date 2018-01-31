@@ -13,7 +13,7 @@ namespace Week6.Data
 
         public ProjectDbContext(DbContextOptions<ProjectDbContext> options) : base(options)
         {
-
+            this.EnsureSeedData();
         }
     }
 }

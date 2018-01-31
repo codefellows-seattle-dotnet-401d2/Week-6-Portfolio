@@ -1,13 +1,22 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Week6.Data;
 
 namespace Week6.Models
 {
     public class ProjectService : IProjectService
     {
-        public ProjectDbContext _context { get; set; }
+        private readonly ProjectDbContext _context { get; set; }
+
+        public ProjectService()
+        {
+            DbContextOptions<ProjectDbContext> options = new DbContextOptionsBuilder<ProjectDbContext>()
+                //################################### SOME STUFF NEEDS TO GO HERE!
+            _context = new ProjectDbContext(options);
+        }
 
         public ProjectService(ProjectDbContext context)
         {
