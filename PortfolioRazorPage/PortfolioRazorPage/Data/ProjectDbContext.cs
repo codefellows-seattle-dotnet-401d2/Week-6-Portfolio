@@ -9,11 +9,11 @@ namespace PortfolioRazorPage.Data
 {
     public class ProjectDbContext : DbContext
     {
-        public DbSet<Project> Project { get; set; }
-
         public ProjectDbContext(DbContextOptions<ProjectDbContext> options) : base(options)
         {
 
         }
+
+        public DbSet<Project> Projects { get; set; }
     }
 }
