@@ -363,7 +363,7 @@ __pycache__/
 *.xsd.cs
 
 # App settings including constring
-Week6/appsettings.json
+*appsettings.json
 
 ### VisualStudio Patch ###
 # By default, sensitive information, such as encrypted password
