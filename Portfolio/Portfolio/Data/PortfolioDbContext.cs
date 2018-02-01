@@ -9,7 +9,7 @@ namespace Portfolio.Data
 {
     public class PortfolioDbContext : DbContext
     {
-        public DbSet<Project> Projects { get; set; }
+        public DbSet<Projects> Projects { get; set; }
 
         public PortfolioDbContext(DbContextOptions<PortfolioDbContext> options) : base(options)
         {

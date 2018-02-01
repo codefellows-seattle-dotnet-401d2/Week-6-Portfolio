@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Portfolio
 {
-    interface IProjectServices 
+    public interface IProjectServices 
     {
         Task DeleteAsync(int id);
 
-        Project Find(int id);
+        Projects Find(int id);
 
-        Task<Project> FindAsync();
+        Task<Projects> FindAsync(int id);
 
-        IQueryable<Project> GetAll(int? count = null, int? page = null );
+        IQueryable<Projects> GetAll(int? count = null, int? page = null );
 
-        Task<Project[]> GetAllAsync(int? count = null, int? page = null);
+        Task<Projects[]> GetAllAsync(int? count = null, int? page = null);
 
-        Task SaveAsync(Project projects);
+        Task SaveAsync(Projects projects);
 
     }
 }

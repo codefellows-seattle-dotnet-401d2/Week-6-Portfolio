@@ -12,6 +12,7 @@ namespace Portfolio.Models
     {
         private readonly PortfolioDbContext _context;
 
+
         public ProjectServices(PortfolioDbContext context)
         {
             _context = context;
@@ -19,36 +20,39 @@ namespace Portfolio.Models
 
         public async Task DeleteAsync(int id)
         {
-            _context.Projects.Remove(new Project { ID = id });
+            _context.Projects.Remove(new Projects { ID = id });
             await _context.SaveChangesAsync();
         }
+              
 
-        public Project Find(int id)
+        public Projects Find(int id)
         {
             return _context.Projects.FirstOrDefault(x => x.ID == id);
         }
 
-        public Task<Project> FindAsync(int id)
+        public Task<Projects> FindAsync(int id)
         {
             return _context.Projects.FirstOrDefaultAsync(x => x.ID == id);
         }
 
-        public Task<Project> FindAsync()
+
+        public IQueryable<Projects> GetAll(int? count = null, int? page = null)
         {
-            throw new NotImplementedException();
+            var actualCount = count.GetValueOrDefault(10);
+
+            return _context.Projects
+                    .Skip(actualCount * page.GetValueOrDefault(0))
+                    .Take(actualCount);
         }
 
-        public IQueryable<Project> GetAll(int? count = null, int? page = null)
+        public Task<Projects[]> GetAllAsync(int? count = null, int? page = null)
         {
-            throw new NotImplementedException();
+            return GetAll(count, page).ToArrayAsync();
         }
 
-        public Task<Project[]> GetAllAsync(int? count = null, int? page = null)
-        {
-            throw new NotImplementedException();
-        }
 
-        public async Task SaveAsync(Project projects)
+        //
+        public async Task SaveAsync(Projects projects)
         {
             var isNew = projects.ID == default(int);
             _context.Entry(projects).State = isNew ? EntityState.Added : EntityState.Modified;
