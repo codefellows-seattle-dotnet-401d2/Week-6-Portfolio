@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Portfolio.Models;
-using Week6Demo.Models;
+
 
 namespace Portfolio
 {

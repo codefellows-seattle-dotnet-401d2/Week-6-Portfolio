@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Models
 {
-    interface IRestaurantService
+    public interface IProjectsService
     {
         Task DeleteAsync(int id);
 
         Projects Find(int id);
 
-        Task<Projects> FindAsync();
+        Task<Projects> FindAsync(int id);
 
         IQueryable<Projects> GetAll(int? count = null, int? page = null );
 

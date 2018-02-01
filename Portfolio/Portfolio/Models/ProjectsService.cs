@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Portfolio.Data;
 using Portfolio.Models;
 
-namespace Week6Demo.Models
+namespace Portfolio.Models
 {
     public class ProjectsService : IProjectsService
     {
@@ -15,40 +15,81 @@ namespace Week6Demo.Models
 
         public ProjectsService()
         {
-            // TODO: CHANGE THIS(delete?), don't use in memory database
+            // TODO: CHANGE THIS to work with a local DB, don't use in memory database
             var options = new DbContextOptionsBuilder<PortfolioDbContext>()
                 .UseInMemoryDatabase("MyProjectsFinder")
                 .Options;
             _context = new PortfolioDbContext(options);
 
         }
+
         public ProjectsService(PortfolioDbContext context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// Remove or Delete a selected project by id
+        /// </summary>
+        /// <param name="id">Int id</param>
+        /// <returns>doesn't return</returns>
         public async Task DeleteAsync(int id)
         {
             _context.Projects.Remove(new Projects { ID = id });
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Find ID of project
+        /// </summary>
+        /// <param name="id">int id</param>
+        /// <returns>Returns id from project</returns>
         public Projects Find(int id)
         {
             return _context.Projects.FirstOrDefault(x => x.ID == id);
         }
 
+        /// <summary>
+        /// Async Find ID of project
+        /// </summary>
+        /// <param name="id">int id</param>
+        /// <returns>Returns id from project</returns>
         public Task<Projects> FindAsync(int id)
         {
             return _context.Projects.FirstOrDefaultAsync(x => x.ID == id);
         }
 
+        /// <summary>
+        /// Gets all of the projects
+        /// </summary>
+        /// <returns>Returns ALL projects</returns>
+        public IQueryable<Projects> GetAll(int? count = null, int? page = null)
+        {
+            var actualCount = count.GetValueOrDefault(10);
 
- 
+            return _context.Projects
+                    .Skip(actualCount * page.GetValueOrDefault(0))
+                    .Take(actualCount);
+        }
+
+        /// <summary>
+        /// Gets all of the projects
+        /// </summary>
+        /// <returns>Returns ALL projects</returns>
+        public Task<Projects[]> GetAllAsync(int? count = null, int? page = null)
+        {
+            return GetAll(count, page).ToArrayAsync();
+        }
+
+        /// <summary>
+        /// Saves a new project 
+        /// </summary>
+        /// <param name="projects">Object object</param>
+        /// <returns>Returns a new project</returns>
         public async Task SaveAsync(Projects projects)
         {
-            var isNew = projects.ID == default(int);
-            _context.Entry(projects).State = isNew ? EntityState.Added : EntityState.Modified;
+            var saved = projects.ID == default(int);
+            _context.Entry(projects).State = saved ? EntityState.Added : EntityState.Modified;
             await _context.SaveChangesAsync();
         }
     }

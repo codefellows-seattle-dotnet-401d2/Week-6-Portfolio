@@ -18,5 +18,9 @@ namespace Portfolio.Models
 
         public string ImageUrl { get; set; }
 
+        public IEnumerable<string> ProjectList
+        {
+            get { return (Technologies ?? String.Empty).Split(); }
+        }
     }
 }
