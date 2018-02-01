@@ -33,15 +33,17 @@ namespace Portfolio.Pages.Admin
         public async Task<IActionResult> OnPost()
         {
             Projects rest = await projectServices.FindAsync(ID.GetValueOrDefault()) ?? new Projects();
+            rest.ID = Projects.ID;
             rest.Name = Projects.Name;
             rest.Title = Projects.Title;
             rest.Description = Projects.Description;
             rest.Skill = Projects.Skill;
+            rest.ImageUrl = Projects.ImageUrl;
           
 
             await projectServices.SaveAsync(rest);
 
-            return RedirectToPage("/Restaurant", new { id = rest.ID });
+            return RedirectToPage("/Projects", new { id = rest.ID });
         }
 
 

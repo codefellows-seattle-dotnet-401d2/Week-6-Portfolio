@@ -2,6 +2,42 @@
 @model Portfolio.Pages.Admin.AddEditProjectsModel
 
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "AddEditProjects";
 }
 
+
+<h2>Add or Edit a Project on this page</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Projects.Name" class="col-md-2 control-label"></label>
+        <input asp-for="Projects.Name" class="form-control" />
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Projects.Title" class="col-md-2 control-label"></label>
+        <textarea rows="5" asp-for="Projects.Title" class="form-control"></textarea>
+
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="Projects.Description" class="col-md-2 control-label"></label>
+        <textarea rows="5" asp-for="Projects.Description" class="form-control"></textarea>
+
+    </div>
+
+
+
+    <div class="form-group">
+        <label asp-for="Projects.Skill" class="col-md-2 control-label"></label>
+        <input asp-for="Projects.Skill" class="form-control" />
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" asp-page-handler="Delete" class="btn btn-primary">Delete</button>
+
+</form>

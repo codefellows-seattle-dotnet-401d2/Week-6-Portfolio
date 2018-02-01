@@ -38,7 +38,7 @@ namespace Portfolio.Models
 
         public IQueryable<Projects> GetAll(int? count = null, int? page = null)
         {
-            var actualCount = count.GetValueOrDefault(10);
+            var actualCount = count.GetValueOrDefault(5);
 
             return _context.Projects
                     .Skip(actualCount * page.GetValueOrDefault(0))
