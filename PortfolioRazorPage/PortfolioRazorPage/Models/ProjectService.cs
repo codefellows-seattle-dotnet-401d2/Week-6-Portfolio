@@ -15,17 +15,13 @@ namespace PortfolioRazorPage.Models
             _context = context;
         }
 
-        public Task DeleteAsync(int id)
+
+        public Project Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Project Find(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Project> FindAsync()
+        public Task<Project> GetAsync()
         {
             throw new NotImplementedException();
         }
@@ -36,6 +32,11 @@ namespace PortfolioRazorPage.Models
         }
 
         public Task<Project[]> GetAllAsync(int? count = null, int? page = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(int id)
         {
             throw new NotImplementedException();
         }

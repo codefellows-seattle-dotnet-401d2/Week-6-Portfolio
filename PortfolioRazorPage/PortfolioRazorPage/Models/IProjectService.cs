@@ -7,16 +7,13 @@ namespace PortfolioRazorPage.Models
 {
     interface IProjectService
     {
-        Task DeleteAsync(int id);
-
-        Project Find(int id);
-
-        Task<Project> FindAsync();
+        Project Get(int id);
+        Task<Project> GetAsync();
 
         IQueryable<Project> GetAll(int? count = null, int? page = null);
-
         Task<Project[]> GetAllAsync(int? count = null, int? page = null);
 
+        Task DeleteAsync(int id);
         Task SaveAsync(Project project);
     }
 }
