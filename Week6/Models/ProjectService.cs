@@ -11,12 +11,6 @@ namespace Week6.Models
     {
         private ProjectDbContext _context { get; set; }
 
-        public ProjectService()
-        {
-            DbContextOptions<ProjectDbContext> options = new DbContextOptionsBuilder<ProjectDbContext>().Options;
-            _context = new ProjectDbContext(options);
-        }
-
         public ProjectService(ProjectDbContext context)
         {
             _context = context;

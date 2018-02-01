@@ -5,12 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Compile Remove="Migrations\20180201190643_Initial.cs" />
+    <Compile Remove="Migrations\20180201190643_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20180201190838_Test.cs" />
+    <Compile Remove="Migrations\20180201190838_Test.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
   </ItemGroup>
 
 </Project>

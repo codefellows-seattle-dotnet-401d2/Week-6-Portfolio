@@ -10,15 +10,15 @@ namespace Week6.Models
     {
         static object synclock = new object();
 
-        private static bool seeded = false;
+        static volatile bool seeded = false;
 
         public static void EnsureSeedData(this ProjectDbContext context)
         {
-            if(!seeded && context.Project.Count() == 0)
+            if(!seeded && context.Portfolio.Count() == 0)
             {
                 lock(synclock){
                     Project[] projects = GenerateProjects();
-                    context.Project.AddRange();
+                    context.Portfolio.AddRange();
                     context.SaveChanges();
                     seeded = true;
                 }
@@ -32,7 +32,7 @@ namespace Week6.Models
                 new Project(
                     "Project Portfolio",
                     "February 2018",
-                    new string[]{ "http://placeholder.pics/svg/800x600" },
+                    "http://placeholder.pics/svg/800x600",
                     "A showcase for all my favorite work.",
                     "C#, ASP.Net, MVC/Razor Pages",
                     "https://github.com/VergilPrime/Week-6-Portfolio-1"

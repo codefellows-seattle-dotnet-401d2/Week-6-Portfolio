@@ -9,11 +9,11 @@ namespace Week6.Data
 {
     public class ProjectDbContext : DbContext 
     {
-        public DbSet<Project> Project { get; set; }
-
-        public ProjectDbContext(DbContextOptions<ProjectDbContext> options) : base(options)
+        public ProjectDbContext(DbContextOptions<ProjectDbContext> Options) : base(Options)
         {
-            this.EnsureSeedData();
+            //this.EnsureSeedData();
         }
+
+        public DbSet<Project> Portfolio { get; set; }
     }
 }
