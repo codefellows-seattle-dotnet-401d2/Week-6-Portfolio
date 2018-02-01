@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Models
 {
-    public class Project
+    public class Projects
     {
 
         public int ID { get; set; }
@@ -16,7 +16,14 @@ namespace Portfolio.Models
 
         public string Description { get; set; }
 
+        public string Skill { get; set; }
+
         public string ImageUrl { get; set; }
+
+        public IEnumerable<string> AdditionalSkills
+        {
+            get { return (Skill ?? String.Empty).Split(NewLine); }
+        }
 
     }
 }

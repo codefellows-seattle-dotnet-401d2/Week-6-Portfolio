@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Models
 {
-    public class PortfolioDbContextSeed
+    public static class PortfolioDbContextSeed
     {
 
         static object synchblock = new object();
@@ -29,38 +29,57 @@ namespace Portfolio.Models
             }
         }
 
-        public static Project[] GenerateProjects()
+        public static Projects[] GenerateProjects()
         {
-            return new Project[]
+            return new Projects[]
             {
-                new Project
+                new Projects
             {
                 Name = "add info here",
 
-                Title = "add infor here",
+                Title = "add info here",
 
-                Description = string.Join(Environment.NewLine, new List<string> {
-                        "add info here",
-                        "add infor here"
+                Description ="add info here",
+
+                Skill = string.Join(Environment.NewLine, new List<string> {
+                        "add skill here",
+                        "add skill here"
                     }),
 
                     ImageUrl = "place image path here"
                 },
 
-                new Project
-                {
-                    Name = "add info here",
+                new Projects
+            {
+                Name = "add info here",
 
-                    Title = "add info here",
+                Title = "add info here",
 
-                    Description = string.Join(Environment.NewLine, new List<string>
-                    {
-                        "add info here",
-                        "add info here"
+                Description ="add info here",
+
+                Skill = string.Join(Environment.NewLine, new List<string> {
+                        "add skill here",
+                        "add skill here"
                     }),
 
                     ImageUrl = "place image path here"
-                }
+                },
+
+                new Projects
+            {
+                Name = "add info here",
+
+                Title = "add info here",
+
+                Description ="add info here",
+
+                Skill = string.Join(Environment.NewLine, new List<string> {
+                        "add skill here",
+                        "add skill here"
+                    }),
+
+                    ImageUrl = "place image path here"
+                },
             };
         }
     }
