@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static System.Environment;
 
 namespace Portfolio.Models
 {
@@ -14,5 +15,7 @@ namespace Portfolio.Models
         public byte[] Image { get; set; }
         public string ImageContentType { get; set; }
         public string Description { get; set; }
+        public string MenuItems { get; set; }
+        public IEnumerable<string> MenuItemsList => (MenuItems ?? string.Empty).Split(NewLine);
     }
 }
