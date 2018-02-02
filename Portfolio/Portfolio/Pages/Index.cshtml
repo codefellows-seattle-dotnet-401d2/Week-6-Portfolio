@@ -1,0 +1,26 @@
+﻿@page
+@using Portfolio.Models
+
+@inject IProjectsService ProjectsService
+
+@{
+    Layout = "_Layout";
+    var projects = await ProjectsService.GetAllAsync();
+}
+
+
+<div class="container">
+    <div class="row container">
+        @foreach (var proj in projects)
+        {
+            <div class="col-md-4">
+
+                // Add project images
+                <img class="img-thumbnail" src="@proj.ImageUrl" />
+            <h4><a asp-page="/Projects" asp-route-id="@proj.ID">@proj.Title</a> </h4>
+            </div>
+
+        }
+    </div>
+</div>
+
