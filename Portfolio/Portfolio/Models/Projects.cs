@@ -20,11 +20,37 @@ namespace Portfolio.Models
 
         public string ImageUrl { get; set; }
 
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
+
+        public string ImageContentType { get; set; }
 
         public IEnumerable<string> AdditionalSkills
         {
             get { return (Skill ?? String.Empty).Split(NewLine); }
+        }
+
+       
+        public string GetInlineImageSrc()
+        {
+            if (Image == null || ImageContentType == null)
+                return null;
+
+            var base64Image = System.Convert.ToBase64String(Image);
+            return $"data:{ImageContentType};base64,{base64Image}";
+        }
+
+        public void SetImage(Microsoft.AspNetCore.Http.IFormFile file)
+        {
+            if (file == null)
+                return;
+
+            ImageContentType = file.ContentType;
+
+            using (var stream = new System.IO.MemoryStream())
+            {
+                file.CopyTo(stream);
+                Image = stream.ToArray();
+            }
         }
 
     }

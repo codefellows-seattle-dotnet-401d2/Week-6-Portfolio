@@ -29,7 +29,14 @@ namespace Portfolio
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-            services.AddMvc();
+            services.AddMvc()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AuthorizeFolder("/Admin");
+                    options.Conventions.AuthorizeFolder("/Account");
+                    options.Conventions.AllowAnonymousToPage("/Account/Login");
+
+                });
 
             services.AddScoped<IProjectServices, ProjectServices>();
 
@@ -38,7 +45,7 @@ namespace Portfolio
             services.AddDbContext<PortfolioDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<IProjectServices, ProjectServices>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,9 +55,9 @@ namespace Portfolio
             {
                 app.UseDeveloperExceptionPage();
             }
-
-        app.UseMvc();
-        app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseMvc();
+            app.UseStaticFiles();
 
             app.Run(async (context) =>
             {

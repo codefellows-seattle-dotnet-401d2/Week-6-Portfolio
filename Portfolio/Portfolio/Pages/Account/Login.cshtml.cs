@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -34,17 +35,26 @@ namespace Portfolio.Pages.Account
                 return Page();
             }
 
-            //using authentication 
+            //using authentication to capture login information and record to cookies
             var scheme = CookieAuthenticationDefaults.AuthenticationScheme;
 
             var user = new ClaimsPrincipal(
                 new ClaimsIdentity(
-                    new[] { new Claim(ClaimTypes.Name, EmailAddress) }
+                    new[] { new Claim(ClaimTypes.Name, EmailAddress) }, scheme
                     )
                   );
 
-            return SignIn(user, scheme);
+            SignIn(user, scheme);
+            return RedirectToPage("/Index");
 
+        }
+
+        public async Task<IActionResult> OnPostLogout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+
+            return RedirectToPage("/Index");
         }
     }
 }
