@@ -7,9 +7,9 @@ namespace Week6.Models
 {
     interface IProjectService
     {
-        Task GetAllAsync();
+        IQueryable<Project> GetAllAsync();
 
-        Task GetAsync(int id);
+        Project GetAsync(int id);
 
         Task PostAsync(Project project);
 

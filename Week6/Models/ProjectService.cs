@@ -16,14 +16,14 @@ namespace Week6.Models
             _context = context;
         }
 
-        public Task GetAllAsync()
+        public IQueryable<Project> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _context.Portfolio;
         }
 
-        public Task GetAsync(int id)
+        public Project GetAsync(int id)
         {
-            throw new NotImplementedException();
+            return _context.Portfolio.FirstOrDefault(project => project.Id == id);
         }
 
         public Task PostAsync(Project project)
