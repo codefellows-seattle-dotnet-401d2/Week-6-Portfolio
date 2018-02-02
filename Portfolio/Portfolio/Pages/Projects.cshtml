@@ -1,0 +1,22 @@
+﻿@page "{id}"
+@using Portfolio.Models
+
+@inject IProjectsService ProjectsService
+
+@{
+    Layout = "_Layout";
+    var id = int.Parse((string)RouteData.Values["id"]);
+    var projects = await ProjectsService.FindAsync(id);
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="col-md-12">
+                <span>
+                    @projects.Description
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
