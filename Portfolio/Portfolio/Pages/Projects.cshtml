@@ -4,28 +4,31 @@
 
 @{
     Layout = "_Layout";
-    var projects = await ProjectServices.GEtAllAsync();
+    var id = int.Parse((string)RouteData.Values["id"]);
+    var projects = await ProjectServices.FindAsync(id);
+
 }
 
-<h2>This is my project</h2>
+<h2>These are my current projects</h2>
 
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-
             <div class="col-md-12">
                 <span>
                     @projects.Description
                 </span>
+                <hr />
+
+
             </div>
-
-
         </div>
-
+        <div class="col-md-4">
+            <img class="img-fluid img-thumbnail" src="@projects.ImageUrl" />
+        </div>
     </div>
 
-
-
+    <a asp-page="/Admin/AddEditProjects" class="btn btn-primary" asp-route-id="@projects.ID">Edit @projects.Name</a>
 </div>
 
 

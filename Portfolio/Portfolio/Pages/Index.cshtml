@@ -2,9 +2,9 @@
 @using Portfolio.Models
 @inject IProjectServices ProjectServices
 
-@{ 
+@{
     Layout = "_Layout";
-    var projects = await ProjectServices.GEtAllAsync();
+    var projects = await ProjectServices.GetAllAsync();
 }
 
 <h1>Andres Portfolio</h1>
@@ -12,11 +12,15 @@
 <h2>Andres is ASP.NET C# Software Developer with 14 years of military service. </h2>
 
 <<div class="container">
-    <div class="row">
-        @foreach (var proj in projects)
+    <div class="row projects">
+        @foreach (var pj in projects)
         {
+            <div class="projects col-md-4">
 
+                <img class="img-thumbnail" height="150" width="150" src="@pj.ImageUrl" />
+                <h3><a asp-page="/Projects" asp-route-id="@pj.ID">@pj.Name</a> </h3>
 
+            </div>
         }
     </div>
 </div>

@@ -13,7 +13,7 @@ namespace Portfolio.Data
 
         public PortfolioDbContext(DbContextOptions<PortfolioDbContext> options) : base(options)
         {
-            this.EnsureSeedData();
+            //this.EnsureSeedData();
         }
     }
 }
