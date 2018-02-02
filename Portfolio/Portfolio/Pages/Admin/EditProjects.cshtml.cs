@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Models;
@@ -15,6 +16,9 @@ namespace Portfolio.Pages.Admin
 
         [BindProperty]
         public Projects Project { get; set; }
+
+        [BindProperty]
+        public IFormFile Image { get; set; }
 
         /// <summary>
         /// Dependency Injection
@@ -48,11 +52,34 @@ namespace Portfolio.Pages.Admin
             proj.Description = Project.Description;
             proj.Technologies = Project.Technologies;
 
+            /*
+            if (Image != null)
+            {
+                // open memory stream to start conversion
+                using (var stream = new System.IO.MemoryStream())
+                {
+                    // copy image to the stream
+                    await Image.CopyToAsync(stream);
+
+                }
+            }
+            */
+
             // saves our new Project created into SaveAsync
             await projectService.SaveAsync(proj);
 
             // once saved, redirect to our page with the new project added
             return RedirectToPage("/Projects", new { id = proj.ID });
+        }
+
+        /// <summary>
+        /// Deletes project passed in by ID and redirects you to home page when a project is deleted
+        /// </summary>
+        /// <returns>Returns you to page without deleted page</returns>
+        public async Task<IActionResult> OnPostDelete()
+        {
+            await projectService.DeleteAsync(ID.Value);
+            return RedirectToPage("/Index");
         }
     }
 }

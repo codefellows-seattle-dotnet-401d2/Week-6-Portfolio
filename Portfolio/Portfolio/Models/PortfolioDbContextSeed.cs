@@ -9,16 +9,16 @@ namespace Portfolio.Models
     {
         static object synchblock = new object();
         static volatile bool seeded = false;
-        public static void EnsureSeedData(this PortfolioDbContext context)
+        public static void EnsureSeedData(PortfolioDbContext context)
         {
-            if (!seeded && context.Projects.Count() == 0)
+            if (!seeded && context.portfolioDb.Count() == 0)
             {
                 lock (synchblock)
                 {
                     if (!seeded)
                     {
                         var projects = GenerateProjects();
-                        context.Projects.AddRange(projects);
+                        context.portfolioDb.AddRange(projects);
                         context.SaveChanges();
                         seeded = true;
                     }

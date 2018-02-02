@@ -12,16 +12,8 @@ namespace Portfolio.Models
     {
         private readonly PortfolioDbContext _context;
 
-
-        public ProjectsService()
-        {
-            // TODO: CHANGE THIS to work with a local DB, don't use in memory database
-            var options = new DbContextOptionsBuilder<PortfolioDbContext>()
-                .UseInMemoryDatabase("MyProjectsFinder")
-                .Options;
-            _context = new PortfolioDbContext(options);
-
-        }
+        // removed constructor with inmemory database here
+        
 
         public ProjectsService(PortfolioDbContext context)
         {
@@ -35,7 +27,7 @@ namespace Portfolio.Models
         /// <returns>doesn't return</returns>
         public async Task DeleteAsync(int id)
         {
-            _context.Projects.Remove(new Projects { ID = id });
+            _context.portfolioDb.Remove(new Projects { ID = id });
             await _context.SaveChangesAsync();
         }
 
@@ -46,7 +38,7 @@ namespace Portfolio.Models
         /// <returns>Returns id from project</returns>
         public Projects Find(int id)
         {
-            return _context.Projects.FirstOrDefault(x => x.ID == id);
+            return _context.portfolioDb.FirstOrDefault(x => x.ID == id);
         }
 
         /// <summary>
@@ -56,7 +48,7 @@ namespace Portfolio.Models
         /// <returns>Returns id from project</returns>
         public Task<Projects> FindAsync(int id)
         {
-            return _context.Projects.FirstOrDefaultAsync(x => x.ID == id);
+            return _context.portfolioDb.FirstOrDefaultAsync(x => x.ID == id);
         }
 
         /// <summary>
@@ -67,7 +59,7 @@ namespace Portfolio.Models
         {
             var actualCount = count.GetValueOrDefault(10);
 
-            return _context.Projects
+            return _context.portfolioDb
                     .Skip(actualCount * page.GetValueOrDefault(0))
                     .Take(actualCount);
         }

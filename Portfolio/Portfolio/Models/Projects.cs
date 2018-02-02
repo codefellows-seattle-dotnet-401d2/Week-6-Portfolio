@@ -18,9 +18,31 @@ namespace Portfolio.Models
 
         public string ImageUrl { get; set; }
 
+        public byte[] Image { get; set; }
+
         public IEnumerable<string> ProjectList
         {
             get { return (Technologies ?? String.Empty).Split(); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /*
+        public string GetInlineImageSrc()
+        {
+
+        }
+        */
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
+        public void SetImage(Microsoft.AspNetCore.Http.IFormFile file)
+        {
+
         }
     }
 }
