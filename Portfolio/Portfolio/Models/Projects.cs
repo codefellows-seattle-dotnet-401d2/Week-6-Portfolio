@@ -20,6 +20,8 @@ namespace Portfolio.Models
 
         public string ImageUrl { get; set; }
 
+        public string Image { get; set; }
+
         public IEnumerable<string> AdditionalSkills
         {
             get { return (Skill ?? String.Empty).Split(NewLine); }
