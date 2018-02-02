@@ -46,10 +46,15 @@ Continue Building out your portfolio. In this branch, you should complete:
 
 
 ### Day 3
-TBD
+Continue Building out your portfolio. In this branch, you should complete:
+- Add Razor Page for your AddEditPortfolio
+- Create a form that will Add/Edit a portfolio item
+
 
 ### Day 4
-TBD
+- Complete your Portfolio Site.
+- Add Authentication
+- Add the capability to upload/save images
 
 
 ## ReadMe
