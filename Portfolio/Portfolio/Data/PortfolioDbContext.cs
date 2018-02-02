@@ -9,11 +9,11 @@ namespace Portfolio.Data
 {
     public class PortfolioDbContext : DbContext
     {
-        public DbSet<Projects> Projects { get; set; }
+        public DbSet<Projects> portfolioDb { get; set; }
 
         public PortfolioDbContext(DbContextOptions<PortfolioDbContext> options) : base(options)
         {
-            this.EnsureSeedData(); // WHAT IS THIS IN SCOPE???
+           //this.EnsureSeedData();
         }
     }
 }
