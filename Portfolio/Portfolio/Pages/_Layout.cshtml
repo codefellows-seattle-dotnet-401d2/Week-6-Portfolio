@@ -4,11 +4,32 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <style type="text/css">
+        body {
+            background: black !important;
+        }
+    </style>
 </head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
+<header>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <a href="/Account/Login">Login</a>
+    }
+    else
+    {
+        <form method="post" asp-page="/Account/Login" asp-page-handler="Logout">
+            <div class="input-group">
+                <span>@User.Identity.Name</span>
+                <button type="submit" class="panel btn btn-link">Logout</button>
+            </div>
+        </form>
+    }
+</header>
+        <body>
+
+            <div class="container">
+                @RenderBody()
+            </div>
+        </body>
 </html>

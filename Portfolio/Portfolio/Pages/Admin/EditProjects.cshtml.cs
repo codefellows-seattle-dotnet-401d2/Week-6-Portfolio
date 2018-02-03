@@ -52,7 +52,7 @@ namespace Portfolio.Pages.Admin
             proj.Description = Project.Description;
             proj.Technologies = Project.Technologies;
 
-            /*
+            
             if (Image != null)
             {
                 // open memory stream to start conversion
@@ -61,10 +61,12 @@ namespace Portfolio.Pages.Admin
                     // copy image to the stream
                     await Image.CopyToAsync(stream);
 
+                    proj.Image = stream.ToArray();
+                    proj.ImageContentType = Image.ContentType;
+
                 }
             }
-            */
-
+    
             // saves our new Project created into SaveAsync
             await projectService.SaveAsync(proj);
 
