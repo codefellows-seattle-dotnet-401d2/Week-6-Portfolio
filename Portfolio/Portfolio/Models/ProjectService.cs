@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Portfolio.Data;
 
 namespace Portfolio.Models
 {
@@ -12,9 +13,10 @@ namespace Portfolio.Models
         {
             _context = context;
         }
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            _context.Projects.Remove(new Project {Id = id});
+            await _context.SaveChangesAsync();
         }
 
         public Project FindProject(int id)

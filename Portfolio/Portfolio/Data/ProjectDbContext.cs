@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Portfolio.Models;
 
-namespace Portfolio.Models
+namespace Portfolio.Data
 {
     public class ProjectDbContext : DbContext
     {
@@ -12,7 +13,7 @@ namespace Portfolio.Models
 
         public ProjectDbContext(DbContextOptions<ProjectDbContext> options) : base(options)
         {
-            
+            this.EnsureSeedData();
         }
     }
 }
