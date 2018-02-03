@@ -15,8 +15,12 @@ namespace Portfolio.Models
         }
         public async Task DeleteAsync(int id)
         {
-            _context.Projects.Remove(new Project {Id = id});
-            await _context.SaveChangesAsync();
+            Project existingProject = _context.Projects.FirstOrDefault(p => p.Id == id);
+            if(existingProject != null)
+            {
+                _context.Projects.Remove(existingProject);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public Project FindProject(int id)
