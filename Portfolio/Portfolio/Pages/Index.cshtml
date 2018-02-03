@@ -1,1 +1,66 @@
 ﻿@page
+@using Portfolio.Models
+
+@*Logo image moving over the horizontal line back and forth*@
+<div>
+    <div>@*Horizontal Line*@</div>
+</div>
+
+<div>
+    <h1>Luay Younus</h1>
+    <div>
+        <img src="" /> @*Personal Image or some image*@
+        <p>Full Stack Web and Mobile Engineer</p>
+    </div>
+</div>
+
+<div>
+    <img src="" /> @*Arrow pointing down*@
+</div>
+
+<div>
+    <h1>My Journey</h1>
+    <img src="" /> @*Squiggly line with Programming languages I learned over the years*@
+</div>
+
+<div>
+    <div>@*Horizontal Line*@</div>
+</div>
+
+<div>
+    <div>
+        @*@foreach (var project in projects)
+        {*@
+            <div>
+                <img src="" /> @*projects Screenshot*@
+            </div>
+
+            <div>
+                <h2>project.Name</h2>
+                <p>project.Description</p>
+                <ul>
+                    @*@foreach (var technology in project.Technologies)
+                    {
+                        <li>technology</li>
+                    }*@
+                </ul>
+            </div>
+        @*}*@
+    </div>
+</div>
+
+<div>
+    <img src="" /> @*Arrow pointing down*@
+</div>
+
+<div>
+    <div>
+        @*Github and Linkedin and Contact Me*@
+    </div>
+</div>
+
+<div>
+    <div>@*Horizontal Line*@</div>
+</div>
+
+@*footer*@ 
