@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Models
 {
-    interface IProjectService
+    public interface IProjectService
     {
         Task DeleteAsync(int id);
         Project FindProject(int id);

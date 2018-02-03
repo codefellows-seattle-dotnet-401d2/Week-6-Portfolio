@@ -25,24 +25,30 @@ namespace Portfolio.Data
             }
         }
 
-        private static Project[] GenerateProjects()
+        public static Project[] GenerateProjects()
         {
             return new []
             {
                 new Project
                 {
                     Name = "Monster Hunter",
-                    DateCompleted = new DateTime(2018, 1, 26)
+                    DateCompleted = new DateTime(2018, 1, 26),
+                    Description = "From the Monster Hunter Game!",
+                    Type = "Web App"
                 },
                 new Project
                 {
                     Name = "Alaska Airlines",
-                    DateCompleted = new DateTime(2017, 11, 1)
+                    DateCompleted = new DateTime(2017, 11, 1),
+                    Description = "AirLines flights reservation web App.",
+                    Type = "WebApp"
                 },
                 new Project
                 {
                     Name = "Graphica",
-                    DateCompleted = new DateTime(2017, 8, 15)
+                    DateCompleted = new DateTime(2017, 8, 15),
+                    Description = "Desktop application for drawing shapes; Paint App clone.",
+                    Type = "Desktop App"
                 }
             };
         }
