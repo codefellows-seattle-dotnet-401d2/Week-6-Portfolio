@@ -40,7 +40,7 @@ namespace Portfolio.Data
                     {
                         "C#", "ASP.NET", "Razor Pages"
                     }),
-                    ImageUrl = "~/Images/MHxHZD.png",
+                    ImageUrl = "/Images/MHxHZD.png",
                 },
                 new Project
                 {
@@ -50,7 +50,7 @@ namespace Portfolio.Data
                     {
                         "C#", "ASP.NET", "Razor Pages"
                     }),
-                    ImageUrl = "~/Images/MHxHZD.png",
+                    ImageUrl = "/Images/MHxHZD.png",
                 },
                 new Project
                 {
@@ -60,7 +60,7 @@ namespace Portfolio.Data
                     {
                         "C#", "ASP.NET", "Razor Pages"
                     }),
-                    ImageUrl = "~/Images/MHxHZD.png",
+                    ImageUrl = "/Images/MHxHZD.png",
                 },
                 new Project
                 {
@@ -70,7 +70,7 @@ namespace Portfolio.Data
                     {
                         "C#", "ASP.NET", "Razor Pages"
                     }),
-                    ImageUrl = "~/Images/MHxHZD.png",
+                    ImageUrl = "/Images/MHxHZD.png",
                 },
                 new Project
                 {
@@ -80,7 +80,7 @@ namespace Portfolio.Data
                     {
                         "C#", "ASP.NET", "Razor Pages"
                     }),
-                    ImageUrl = "~/Images/MHxHZD.png",
+                    ImageUrl = "/Images/MHxHZD.png",
                 },
             };
         }
