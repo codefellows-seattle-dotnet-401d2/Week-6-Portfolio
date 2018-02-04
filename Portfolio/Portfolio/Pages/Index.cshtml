@@ -1,3 +1,8 @@
 ﻿@page
+@using Portfolio.Models
+@inject IProjectService ProjectService
 
-<h2>Hello World!</h2>
+@{ 
+    var projects = await ProjectService.GetAllAsync();
+}
+

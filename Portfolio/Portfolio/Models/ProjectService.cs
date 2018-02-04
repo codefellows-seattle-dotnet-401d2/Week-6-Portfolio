@@ -42,6 +42,17 @@ namespace Portfolio.Models
             return _context.Projects.FirstOrDefaultAsync(p => p.Id == id);
         }
 
+        public IQueryable<Project> GetAll(int? count = null, int? page = null)
+        {
+            int actualCount = count.GetValueOrDefault(10);
+            return _context.Projects.Skip(actualCount * page.GetValueOrDefault(0)).Take(actualCount);
+        }
+
+        public Task<Project[]> GetAllAsync(int? count = null, int? page = null)
+        {
+            return GetAll(count, page).ToArrayAsync();
+        }
+
         public async Task SaveAsync(Project project)
         {
             await _context.Projects.AddAsync(project);
