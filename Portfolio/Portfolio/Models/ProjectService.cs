@@ -22,34 +22,30 @@ namespace Portfolio.Models
             _context = context;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            Project projectToDelete = await _context.Projects.FindAsync(id);
+            if (projectToDelete != null)
+            {
+                _context.Projects.Remove(projectToDelete);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public Project Find(int id)
         {
-            throw new NotImplementedException();
+            return _context.Projects.FirstOrDefault(p => p.Id == id);
         }
 
-        public Task<Project> FindAsync()
+        public Task<Project> FindAsync(int id)
         {
-            throw new NotImplementedException();
+            return _context.Projects.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public IQueryable<Project> GetAll(int? count = null, int? page = null)
+        public async Task SaveAsync(Project project)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Project[]> GetAllAsync(int? count = null, int? page = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SaveAsync(Project project)
-        {
-            throw new NotImplementedException();
+            await _context.Projects.AddAsync(project);
+            await _context.SaveChangesAsync();
         }
     }
 }
