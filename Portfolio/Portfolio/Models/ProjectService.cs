@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Portfolio.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Portfolio.Models
 {
@@ -23,29 +24,28 @@ namespace Portfolio.Models
             }
         }
 
-        public Project FindProject(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public Project FindProject(int id) => _context.Projects.FirstOrDefault(x => x.Id == id);
 
-        public Task<Project> FindAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public Task<Project> FindAsync(int id) => _context.Projects.FirstOrDefaultAsync(x => x.Id == id);
 
         public IQueryable<Project> GetAll(int? count = null, int? page = null)
         {
-            throw new NotImplementedException();
+            var actualCount = count.GetValueOrDefault(10);
+            return _context.Projects
+                    .Skip(actualCount * page.GetValueOrDefault(0))
+                    .Take(actualCount);
         }
 
-        public Task<Project[]> GetAllAsync(int? count = null, int? page = null)
-        {
-            throw new NotImplementedException();
-        }
+        public Task<Project[]> GetAllAsync(int? count = null, int? page = null) => GetAll(count, page).ToArrayAsync();
+        
 
-        public Task SaveAsync(Project project)
+        public async Task SaveAsync(Project project)
         {
-            throw new NotImplementedException();
+            var doesItExist = project.Id == default(int);
+
+            _context.Entry(project).State = doesItExist ? EntityState.Added : EntityState.Modified;
+
+            await _context.SaveChangesAsync();
         }
     }
 }

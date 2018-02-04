@@ -24,7 +24,7 @@ namespace Portfolio.Models
 
         public DateTime DateCompleted { get; set; }
 
-        public string ImgUrl { get; set; }
+        public string ImageUrl { get; set; }
         public byte[] Image { get; set; }
         public string ImageContentType { get; set; }
 
