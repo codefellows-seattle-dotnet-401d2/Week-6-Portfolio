@@ -3,6 +3,7 @@
 @inject IProjectService ProjectService
 
 @{ 
+    Layout = "_Layout";
     var projects = await ProjectService.GetAllAsync();
 }
 
@@ -10,7 +11,9 @@
     <div class="row">
         @foreach(var proj in projects)
         {
-
+            <div class="col-md-4">
+                @proj.Name
+            </div>
         }
     </div>
 </div>
