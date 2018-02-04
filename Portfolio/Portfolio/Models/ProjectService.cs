@@ -1,4 +1,5 @@
-﻿using Portfolio.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Portfolio.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,12 @@ namespace Portfolio.Models
     public class ProjectService : IProjectService
     {
         private readonly ProjectDbContext _context;
+
+        public ProjectService()
+        {
+            var options = new DbContextOptionsBuilder<ProjectDbContext>().UseInMemoryDatabase("MyProjectFinder").Options;
+            _context = new ProjectDbContext(options);
+        }
 
         public ProjectService(ProjectDbContext context)
         {
