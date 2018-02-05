@@ -4,11 +4,47 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Reset.css" rel="stylesheet" />
+    <link href="~/Style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
+
+<header>
+    <nav class="navbar static-top navbar-expand-lg" style="background-color: teal">
+        <h1><a class="navbar-brand text-white" href="Index.cshtml">Home</a></h1>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a href="/Account/Login">Login</a>
+                    }
+                    else
+                    {
+                        <form method="post" asp-page="/Account/Login" asp-page-handler="Logout">
+                            <div class="input-group">
+                                <span>@User.Identity.Name</span>
+                                <button type="submit" class="panel btn btn-link">Logout</button>
+                            </div>
+                        </form>
+                    }
+                </li>
+            </ul>
+            <span class="navbar-nav active">
+                <a class="nav-link nav-item text-white" href="#">ABOUT <span class="sr-only">(current)</span></a>
+            </span>
+            <span class="navbar-nav active">
+                <a class="nav-link nav-item text-white" href="#">CONTACT <span class="sr-only">(current)</span></a>
+            </span>
+        </div>
+    </nav>
+</header>
+        <body style="background-color:floralwhite">
+
+            <div class="container" style="margin-top: 5%;">
+                @RenderBody()
+            </div>
+        </body>
+
+
 </html>

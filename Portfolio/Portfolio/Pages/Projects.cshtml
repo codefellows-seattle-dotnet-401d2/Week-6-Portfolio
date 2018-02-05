@@ -1,7 +1,5 @@
 ﻿@page "{id}"
-@using Portfolio.Models
 
-@inject IProjectsService ProjectsService
 
 @{
     Layout = "_Layout";
@@ -9,14 +7,43 @@
     var projects = await ProjectsService.FindAsync(id);
 }
 
+<h2>Projects</h2>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8">
             <div class="col-md-12">
-                <span>
+                <div style="font-weight: bold">
+                    @projects.Title
+                </div>
+                <div>
+                    @projects.Image
+                </div>
+                <div>
                     @projects.Description
-                </span>
+                </div>
+                <div style="font-style: italic ">
+                   Technologies: @projects.Technologies
+                </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            @if(projects.Image != null)
+            {
+                <img class="img-fluid img-thumbnail" src="@projects.GetInlineImageSrc()" />
+
+            }
+            else
+            {
+                <img class="img-fluid img-thumbnail" src="@projects.ImageUrl" />
+
+            }
+
+        </div>
     </div>
+            @if(User.Identity.IsAuthenticated)
+            {
+                <a asp-page="/Admin/EditProjects" class="btn btn-primary" asp-route-id="@projects.ID">Edit @projects.Title</a>
+            }
 </div>
