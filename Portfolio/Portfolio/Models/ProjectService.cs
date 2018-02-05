@@ -38,7 +38,6 @@ namespace Portfolio.Models
 
         public Task<Project[]> GetAllAsync(int? count = null, int? page = null) => GetAll(count, page).ToArrayAsync();
         
-
         public async Task SaveAsync(Project project)
         {
             var doesItExist = project.Id == default(int);
