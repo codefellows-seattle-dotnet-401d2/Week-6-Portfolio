@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Models;
@@ -15,6 +16,9 @@ namespace Portfolio.Pages.Admin
 
         [BindProperty]
         public Project Project { get; set; }
+
+        [BindProperty]
+        public IFormFile Image { get; set; }
 
         private readonly IProjectService projectService;
 
@@ -30,7 +34,24 @@ namespace Portfolio.Pages.Admin
 
         public async Task<IActionResult> OnPost()
         {
-            await projectService.SaveAsync(Project);
+            Project proj = await projectService.FindAsync(Id.GetValueOrDefault()) ?? new Project();
+
+            if (Project.Name != null && Project.Name != "") proj.Name = Project.Name;
+            if (Project.Description != null && Project.Description != "") proj.Description = Project.Description;
+            if (Project.SkillItems != null && Project.SkillItems != "") proj.SkillItems = Project.SkillItems;
+            if (Project.ImageUrl != null && Project.ImageUrl != "") proj.ImageUrl = Project.ImageUrl;
+
+            if (Image != null)
+            {
+                using(var stream = new System.IO.MemoryStream())
+                {
+                    await Image.CopyToAsync(stream);
+                    proj.Image = stream.ToArray();
+                    proj.ImageContentType = Image.ContentType;
+                }
+            }
+
+            await projectService.SaveAsync(proj);
 
             return RedirectToPage("/Project", new { id = Project.Id });
         }

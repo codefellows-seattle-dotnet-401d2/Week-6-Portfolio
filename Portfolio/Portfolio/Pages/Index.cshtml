@@ -13,7 +13,12 @@
         {
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 card bg-light">
                 <a class="text-center" asp-page="/Project" asp-route-id="@proj.Id">
-                    <img class="img-fluid" src="@proj.ImageUrl" />
+
+                    @if (proj.Image == null)
+                    {<img class="img-fluid" src="@proj.ImageUrl" />}
+                    else
+                    {<img class="img-fluid" src="@proj.GetInlineImageSrc()" />}
+
                     @proj.Name
                 </a>
             </div>

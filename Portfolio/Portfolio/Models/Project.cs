@@ -15,9 +15,19 @@ namespace Portfolio.Models
         public string ImageUrl { get; set; }
         public byte[] Image { get; set; }
         public string ImageContentType { get; set; }
+
         public IEnumerable<string> SkillItemList
         {
             get { return (SkillItems ?? String.Empty).Split(NewLine); }
+        }
+
+        public string GetInlineImageSrc()
+        {
+            if (Image == null || ImageContentType == null) return null;
+
+            var base64Image = System.Convert.ToBase64String(Image);
+
+            return $"data:{ImageContentType}; base64, {base64Image}";
         }
     }
 }

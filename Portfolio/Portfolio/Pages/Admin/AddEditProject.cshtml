@@ -7,26 +7,30 @@
 
 <h3>AddEditProject</h3>
 
-<form action="/" method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label asp-for="Project.Name" class="col-md-2">Name:</label>
+        <label asp-for="Project.Name" class="col-md-2 control-label">Name:</label>
         <input asp-for="Project.Name" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="Project.Description" class="col-md-2">Description:</label>
+        <label asp-for="Project.Description" class="col-md-2 control-label">Description:</label>
         <textarea rows="5" asp-for="Project.Description" class="form-control"></textarea>
     </div>
 
     <div class="form-group">
-        <label asp-for="Project.ImageUrl" class="col-md-2">Image URL:</label>
+        <label asp-for="Project.ImageUrl" class="col-md-2 control-label">Image URL:</label>
         <input asp-for="Project.ImageUrl" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="Project.SkillItems" class="col-md-2">List of Skills:</label>
+        <label asp-for="Project.SkillItems" class="col-md-2 control-label">List of Skills:</label>
         <textarea rows="5" asp-for="Project.SkillItems" class="form-control"></textarea>
     </div>
+
+    <label asp-for="Project.Image" class="col-md-2 control-label">Image Upload:</label>
+    <input type="file" asp-for="Project.Image" />
+
     <button type="submit" class="btn btn-primary">Save</button>
     <button type="submit" asp-page-handler="Delete" class="btn btn-danger">Delete</button>
 </form>
