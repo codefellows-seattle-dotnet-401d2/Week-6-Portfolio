@@ -1,0 +1,36 @@
+﻿@page
+@model Portfolio.Pages.Admin.AddEditProjectModel
+@{
+    ViewData["Title"] = "AddEditProject";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+
+<h3>AddEditProject</h3>
+
+<form action="/" method="post">
+    <div class="form-group">
+        <label asp-for="Project.Name" class="col-md-2">Name:</label>
+        <input asp-for="Project.Name" class="form-control" />
+    </div>
+</form>
+
+<form action="/" method="post">
+    <div class="form-group">
+        <label asp-for="Project.Description" class="col-md-2">Description:</label>
+        <textarea rows="5" asp-for="Project.Description" class="form-control"></textarea>
+    </div>
+</form>
+
+<form action="/" method="post">
+    <div class="form-group">
+        <label asp-for="Project.ImageUrl" class="col-md-2">Image URL:</label>
+        <input asp-for="Project.ImageUrl" class="form-control" />
+    </div>
+</form>
+
+<form action="/" method="post">
+    <div class="form-group">
+        <label asp-for="Project.SkillItems" class="col-md-2">List of Skills:</label>
+        <textarea rows="5" asp-for="Project.SkillItems" class="form-control"></textarea>
+    </div>
+</form>
