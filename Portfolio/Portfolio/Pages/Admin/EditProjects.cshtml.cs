@@ -52,7 +52,6 @@ namespace Portfolio.Pages.Admin
             proj.Description = Project.Description;
             proj.Technologies = Project.Technologies;
 
-            
             if (Image != null)
             {
                 // open memory stream to start conversion
@@ -63,7 +62,6 @@ namespace Portfolio.Pages.Admin
 
                     proj.Image = stream.ToArray();
                     proj.ImageContentType = Image.ContentType;
-
                 }
             }
     

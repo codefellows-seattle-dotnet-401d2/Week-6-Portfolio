@@ -7,15 +7,24 @@
     var projects = await ProjectsService.FindAsync(id);
 }
 
-<h2>Edit!</h2>
+<h2>Projects</h2>
 
 <div class="container">
     <div class="row">
         <div class="col-md-8">
             <div class="col-md-12">
-                <span>
+                <div style="font-weight: bold">
+                    @projects.Title
+                </div>
+                <div>
+                    @projects.Image
+                </div>
+                <div>
                     @projects.Description
-                </span>
+                </div>
+                <div style="font-style: italic ">
+                   Technologies: @projects.Technologies
+                </div>
             </div>
         </div>
 
