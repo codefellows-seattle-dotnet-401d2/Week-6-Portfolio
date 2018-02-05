@@ -1,6 +1,4 @@
 ﻿@page
-@using Portfolio.Models
-@inject IProjectService ProjectService
 
 @{ 
     Layout = "_Layout";
@@ -33,19 +31,19 @@
     <div>@*Horizontal Line*@</div>
 </div>
 
-<div>
-    <div>
+<div class="container">
+    <div class="row">
         @foreach (var project in projects)
         {
-            <div>
-                <img src="@project.ImageUrl" /> @*projects Screenshot*@
+            <div class="col-md-9">
+                <img class="img-thumbnail" height="150" src="@project.ImageUrl" /> @*projects Screenshot*@
             </div>
 
-            <div>
+            <div class="col-md-3">
                 <h2><a asp-page="/project" asp-route-id="@project.Id">@project.Name</a></h2>
                 <p>@project.Description</p>
                 <ul>
-                    @foreach (var technology in project.Technologies)
+                    @foreach (var technology in project.TechnologiesList)
                     {
                         <li>@technology</li>
                     }
