@@ -1,0 +1,26 @@
+﻿@page "{id}"
+
+@{ 
+    Layout = "_Layout";
+    var id = int.Parse((string)RouteData.Values["id"]);
+    var project = await ProjectService.FindAsync(id);
+}
+
+<h2>Project Page</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="col-md-12">
+                <span>
+                    @project.Description
+                </span>
+                <hr />
+            </div>
+        </div>
+        <div>
+            <img src="@project.ImageUrl" class="img-fluid" />
+        </div>
+    </div>
+    <a asp-page="/Admin/AddEditProject" class="btn btn-primary" asp-route-id="@project.Id">Edit</a>
+</div>

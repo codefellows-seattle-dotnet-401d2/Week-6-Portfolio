@@ -1,0 +1,22 @@
+﻿@page
+@using Portfolio.Models
+@inject IProjectService ProjectService
+
+@{ 
+    Layout = "_Layout";
+    var projects = await ProjectService.GetAllAsync();
+}
+
+<div class="container">
+    <div class="row">
+        @foreach(var proj in projects)
+        {
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 card bg-light">
+                <a class="text-center" asp-page="/Project" asp-route-id="@proj.Id">
+                    <img class="img-fluid" src="@proj.ImageUrl" />
+                    @proj.Name
+                </a>
+            </div>
+        }
+    </div>
+</div>
