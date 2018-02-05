@@ -27,5 +27,18 @@ namespace Portfolio.Pages.Admin
         {
             Project = await projectService.FindAsync(Id.GetValueOrDefault()) ?? new Project();
         }
+
+        public async Task<IActionResult> OnPost()
+        {
+            await projectService.SaveAsync(Project);
+
+            return RedirectToPage("/Project", new { id = Project.Id });
+        }
+
+        public async Task<IActionResult> onPostDelete()
+        {
+            await projectService.DeleteAsync(Id.Value);
+            return RedirectToPage("/Index");
+        }
     }
 }
