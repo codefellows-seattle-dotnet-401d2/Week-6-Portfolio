@@ -1,0 +1,38 @@
+﻿@page "{id:int?}"
+@model Portfolio.Pages.Admin.AddEditProjectModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "AddEditProject";
+}
+
+<h2>Add / Delete Project</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Project.Name" class="col-md-2 control-label"></label>
+        <input asp-for="Project.Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Project.Type" class="col-md-2 control-label"></label>
+        <input asp-for="Project.Type" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Project.Description" class="col-md-2 control-label"></label>
+        <textarea rows="3" asp-for="Project.Description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Project.DateCompleted" class="col-md-2 control-label"></label>
+        <input type="datetime-local" asp-for="Project.DateCompleted" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Project.Technologies" class="col-md-2 control-label"></label>
+        <textarea rows="5" asp-for="Project.Technologies" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" asp-page-handler="Delete" class="btn btn-primary">Delete</button>
+</form>

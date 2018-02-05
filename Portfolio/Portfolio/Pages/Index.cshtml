@@ -1,5 +1,9 @@
 ﻿@page
-@using Portfolio.Models
+
+@{ 
+    Layout = "_Layout";
+    var projects = await ProjectService.GetAllAsync();
+}
 
 @*Logo image moving over the horizontal line back and forth*@
 <div>
@@ -27,25 +31,25 @@
     <div>@*Horizontal Line*@</div>
 </div>
 
-<div>
-    <div>
-        @*@foreach (var project in projects)
-        {*@
-            <div>
-                <img src="" /> @*projects Screenshot*@
+<div class="container">
+    <div class="row">
+        @foreach (var project in projects)
+        {
+            <div class="col-md-9">
+                <img class="img-thumbnail" height="150" src="@project.ImageUrl" /> @*projects Screenshot*@
             </div>
 
-            <div>
-                <h2>project.Name</h2>
-                <p>project.Description</p>
+            <div class="col-md-3">
+                <h2><a asp-page="/project" asp-route-id="@project.Id">@project.Name</a></h2>
+                <p>@project.Description</p>
                 <ul>
-                    @*@foreach (var technology in project.Technologies)
+                    @foreach (var technology in project.TechnologiesList)
                     {
-                        <li>technology</li>
-                    }*@
+                        <li>@technology</li>
+                    }
                 </ul>
             </div>
-        @*}*@
+        }
     </div>
 </div>
 

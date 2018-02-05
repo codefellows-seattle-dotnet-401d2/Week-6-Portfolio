@@ -22,16 +22,14 @@ namespace Portfolio.Models
         [StringLength(200), Required]
         public string Description { get; set; }
 
+        [Display(Name="Date Completed")]
         public DateTime DateCompleted { get; set; }
 
-        public string ImgUrl { get; set; }
+        public string ImageUrl { get; set; }
         public byte[] Image { get; set; }
         public string ImageContentType { get; set; }
 
-        [NotMapped]
-        public List<string> Technologies { get; set; }
-
-        public string MenuItems { get; set; }
-        public IEnumerable<string> MenuItemsList => (MenuItems ?? string.Empty).Split(NewLine);
+        public string Technologies { get; set; }
+        public IEnumerable<string> TechnologiesList => (Technologies ?? string.Empty).Split(NewLine);
     }
 }
