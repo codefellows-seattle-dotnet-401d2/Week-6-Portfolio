@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Week6.Models
 {
-    interface IProjectService
+    public interface IProjectService
     {
         IQueryable<Project> GetAllAsync();
 

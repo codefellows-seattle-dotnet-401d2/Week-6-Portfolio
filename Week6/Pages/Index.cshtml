@@ -5,7 +5,8 @@
 
 @{
     // This shouldn't work because strong types don't work with CSHTML files but maybe it will.
-    List<Project> projects = (List<Project>)ProjectService.GetAllAsync();
+    // EDIT: it does!
+    List<Project> projects = ProjectService.GetAllAsync().ToList<Project>();
 }
 
 @*HEAD STUFF*@

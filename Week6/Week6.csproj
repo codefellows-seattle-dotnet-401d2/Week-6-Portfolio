@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\admin_edit\" />
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
