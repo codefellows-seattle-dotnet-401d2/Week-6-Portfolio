@@ -25,7 +25,14 @@ namespace Week6
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            // These options control access to different pages
+            services.AddMvc()
+                .AddRazorPagesOptions(options =>
+
+                {
+                    options.Conventions.AuthorizeFolder("/Admin");
+                    options.Conventions.AllowAnonymousToPage("/Admin/Login");
+                });
             services.AddScoped<IProjectService, ProjectService>();
             services.AddDbContext<ProjectDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
