@@ -7,9 +7,48 @@
     var projects = await ProjectServices.GetAllAsync();
 }
 
-<h1>Andres Portfolio</h1>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link href="~/Style.css" rel="stylesheet" />
+</head>
 
-<h2>Andres is ASP.NET C# Software Developer with 14 years of military service. </h2>
+<header>
+<nav class="navbar static-top navbar-expand-lg" style="background-color: teal">
+    <h1><a class="navbar-brand text-white" href="#">Home</a></h1>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <a href="/Account/Login">Login</a>
+                }
+                else
+                {
+                    <form method="post" asp-page="/Account/Login" asp-page-handler="Logout">
+                        <div class="input-group">
+                            <span>@User.Identity.Name</span>
+                            <button type="submit" class="panel btn btn-link">Logout</button>
+                        </div>
+                    </form>
+                }
+            </li>
+        </ul>
+        <span class="navbar-nav active">
+            <a class="nav-link nav-item text-white" href="#">ABOUT <span class="sr-only">(current)</span></a>
+        </span>
+        <span class="navbar-nav active">
+            <a class="nav-link nav-item text-white" href="#">CONTACT <span class="sr-only">(current)</span></a>
+        </span>
+    </div>
+</nav>
+</header>
+
+
+<h1>Andres Ibarra Portfolio</h1>
+
+<h2>Andres is an ASP.NET C# Software Developer with 15 years of military service. </h2>
+
+
 
 <<div class="container">
     <div class="row projects">
