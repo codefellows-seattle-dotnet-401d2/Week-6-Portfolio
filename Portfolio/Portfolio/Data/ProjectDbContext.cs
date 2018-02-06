@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Models;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+
 
 namespace Portfolio.Data
 {
@@ -13,7 +16,7 @@ namespace Portfolio.Data
 
         public ProjectDbContext(DbContextOptions<ProjectDbContext> options) : base(options)
         {
-            this.EnsureSeedData();
+            
         }
     }
 }
