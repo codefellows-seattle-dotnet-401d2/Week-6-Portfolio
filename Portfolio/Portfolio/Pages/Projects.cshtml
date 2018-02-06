@@ -1,0 +1,47 @@
+﻿@page "{id}"
+@using Portfolio.Models
+@inject IProjectServices ProjectServices
+
+@{
+    Layout = "_Layout";
+    var id = int.Parse((string)RouteData.Values["id"]);
+    var projects = await ProjectServices.FindAsync(id);
+
+}
+
+<h2>These are my current projects</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="col-md-12">
+                <span>
+                    @projects.Description
+                </span>
+                <hr />
+
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            @if (projects.Image != null)
+            {
+                <img class="img-fluid img-thumbnail" src="@projects.GetInlineImageSrc()" />
+            }
+            else
+            {
+                <img class="img-fluid img-thumbnail" src="@projects.ImageUrl" />
+
+            }
+
+        </div>
+    </div>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-page="/Admin/AddEditProjects" class="btn btn-primary" asp-route-id="@projects.ID">Edit @projects.Name</a>
+    }
+
+</div>
+
+
