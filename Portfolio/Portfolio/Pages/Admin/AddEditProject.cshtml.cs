@@ -52,11 +52,11 @@ namespace Portfolio.Pages.Admin
             }
 
             await projectService.SaveAsync(proj);
-
-            return RedirectToPage("/Project", new { id = Project.Id });
+            // proj = await projectService.FindAsync(Id.GetValueOrDefault());
+            return RedirectToPage("/Project", new { id = proj.Id });
         }
 
-        public async Task<IActionResult> onPostDelete()
+        public async Task<IActionResult> OnPostDelete()
         {
             await projectService.DeleteAsync(Id.Value);
             return RedirectToPage("/Index");

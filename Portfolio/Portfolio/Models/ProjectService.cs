@@ -55,7 +55,8 @@ namespace Portfolio.Models
 
         public async Task SaveAsync(Project project)
         {
-            await _context.Projects.AddAsync(project);
+            bool alreadyExists = project.Id == default(int);
+            _context.Entry(project).State = alreadyExists ? EntityState.Added : EntityState.Modified;
             await _context.SaveChangesAsync();
         }
     }
