@@ -35,6 +35,7 @@ namespace Portfolio
                     options.Conventions.AuthorizeFolder("/Admin");
                     options.Conventions.AuthorizeFolder("/Account");
                     options.Conventions.AllowAnonymousToPage("/Account/Login");
+                    options.Conventions.AllowAnonymousToPage("/Admin/EditProjects");
 
                 });
 
