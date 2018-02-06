@@ -48,8 +48,8 @@ namespace Portfolio.Pages.Account
                     new[] { new Claim(ClaimTypes.Name, CurrentUser.EmailAddress) }, scheme));
 
             // Sign in with claim and credentials
-
-            return SignIn(user, scheme);
+            SignIn(user, scheme);
+            return RedirectToPage("/Index");
         }
 
         public async Task<IActionResult> OnPostLogout()
