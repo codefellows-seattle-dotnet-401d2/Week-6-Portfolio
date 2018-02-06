@@ -29,5 +29,9 @@
         </div>
     </div>
 
-    <a asp-page="/Admin/AddEditProject" class="btn btn-primary" asp-route-id="@project.Id">Edit</a>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-page="/Admin/AddEditProject" class="btn btn-primary" asp-route-id="@project.Id">Edit</a>
+    }
+
 </div>
