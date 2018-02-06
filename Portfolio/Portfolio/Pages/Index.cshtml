@@ -5,35 +5,35 @@
 
 @{
     //Layout = "_Layout";
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     var projects = await ProjectsService.GetAllAsync();
 }
 
 
 <head>
-
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link href="~/Style.css" rel="stylesheet" />
 </head>
 
 <header>
 
     <nav class="navbar static-top navbar-expand-lg" style="background-color: teal">
-        <h1><a class="navbar-brand text-white" href="#" >Home</a></h1>
+        <h1><a class="navbar-brand text-white" href="#">Home</a></h1>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                @if (!User.Identity.IsAuthenticated)
-                {
-                <a href="/Account/Login">Login</a>
-                }
-                else
-                {
-                <form method="post" asp-page="/Account/Login" asp-page-handler="Logout">
-                    <div class="input-group">
-                        <span>@User.Identity.Name</span>
-                        <button type="submit" class="panel btn btn-link">Logout</button>
-                    </div>
-                </form>
-}
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a href="/Account/Login">Login</a>
+                    }
+                    else
+                    {
+                        <form method="post" asp-page="/Account/Login" asp-page-handler="Logout">
+                            <div class="input-group">
+                                <span>@User.Identity.Name</span>
+                                <button type="submit" class="panel btn btn-link">Logout</button>
+                            </div>
+                        </form>
+                    }
                 </li>
             </ul>
             <span class="navbar-nav active">
@@ -47,7 +47,7 @@
 </header>
 
 
-<body style="background-color: floralwhite">
+<body>
     @*login main color w/ text*@
     <section>
         <div class="text-center" style="height: 300px; background-color: teal; color: white">
@@ -57,8 +57,6 @@
         </div>
     </section>
 
-
-
     @*create space for app showcase*@
     <section style="margin-top: 5%">
         <div class="second-div container-fluid">
@@ -66,28 +64,28 @@
                 <div class="col text-center">
                     <h3>Projects</h3>
                     @foreach (var proj in projects)
-                     {
+                    {
                         <div class="col">
-                        @if (proj.Image != null)
-                         {
-                            // Add project images
-                            <img class="img-thumbnail" height="400" width="250" src="@proj.GetInlineImageSrc()" />
-                         }
-                         else
-                         {
-                            <img class="img-thumbnail" height="400" width="250" src="@proj.ImageUrl" />
+                            @if (proj.Image != null)
+                            {
+                                // Add project images
+                                <img class="img-thumbnail" height="400" width="250" src="@proj.GetInlineImageSrc()" />
+                            }
+                            else
+                            {
+                                <img class="img-thumbnail" height="400" width="250" src="@proj.ImageUrl" />
 
-                         }
+                            }
 
-                         <h4 style="color: dimgray"><a asp-page="/Projects" asp-route-id="@proj.ID">@proj.Title</a> </h4>
+                            <h4 style="color: dimgray"><a asp-page="/Projects" asp-route-id="@proj.ID">@proj.Title</a> </h4>
+                        </div>
+                    }
                 </div>
-                     }
-                </div>
-            
+
             </div>
         </div>
     </section>
-    
+
 </body>
 
 <footer>
@@ -97,6 +95,6 @@
 </footer>
 
 
-       
+
 
 

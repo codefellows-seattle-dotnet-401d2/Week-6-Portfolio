@@ -49,6 +49,7 @@ namespace Portfolio
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
             app.UseMvc();
             app.UseStaticFiles();
 
