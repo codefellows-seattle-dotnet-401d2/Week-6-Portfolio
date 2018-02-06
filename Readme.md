@@ -17,8 +17,8 @@ In order to build this application . . .
 8. Create your get, put, post, save, delete, methods that will be used to add/edit your projects
 
 # Example
-!url(Portfolio1.png)
-!url(Portfolio2.png)
+![alt](Portfolio1.png "Logo Title Text 1")
+
 
 # Architecture
 This application is created using ASP.NET Core 2.0 Console applicaitons. 
