@@ -13,8 +13,6 @@ namespace Portfolio.Models
         private readonly PortfolioDbContext _context;
 
         // removed constructor with inmemory database here
-        
-
         public ProjectsService(PortfolioDbContext context)
         {
             _context = context;
