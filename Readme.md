@@ -15,9 +15,14 @@ In order to build this application . . .
 6. Build your database with code first migration
 7. Use bootstrap to create a form to add new projects
 8. Create your get, put, post, save, delete, methods that will be used to add/edit your projects
+9. Add feature to login  
 
 # Example
+#### Login Feature
 ![alt](Portfolio1.png "Logo Title Text 1")
+
+#### Add/Edit Projects
+![alt](Portfolio2.png "Logo Title Text 1")
 
 
 # Architecture
