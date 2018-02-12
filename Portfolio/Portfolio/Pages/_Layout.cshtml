@@ -7,7 +7,21 @@
     <title>Ariel's Portfolio</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
+
 <body>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a href="/Account/Login">Login</a>
+    }
+    else
+    {
+        <form method="post" asp-page="/Account/Login" asp-page-handler="Logout">
+            <div class="input-group">
+                <span>Hello @User.Identity.Name</span>
+                <button type="submit" class="panel btn-link">Logout</button>
+            </div>
+        </form>
+    }
     <div class="container">
         @RenderBody()
     </div>
