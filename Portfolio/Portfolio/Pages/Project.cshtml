@@ -1,0 +1,33 @@
+﻿@page "{id}"
+
+@{ 
+    Layout = "_Layout";
+    var id = int.Parse((string)RouteData.Values["id"]);
+    var project = await ProjectService.FindAsync(id);
+}
+
+<h2>Project Page</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="col-md-12">
+                <span>
+                    @project.Name
+                </span>
+                <hr />
+            </div>
+        </div>
+        <div>
+            @if (project.Image == null)
+            {<img class="img-fluid" src="@project.ImageUrl" />}
+            else
+            {<img class="img-fluid" src="@project.GetInlineImageSrc()" />}
+        </div>
+    </div>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-page="/Admin/AddEditProject" class="btn btn-primary" asp-route-id="@project.Id">Edit</a>
+    }
+</div>

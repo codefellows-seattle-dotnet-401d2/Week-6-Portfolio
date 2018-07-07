@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Ariel's Portfolio</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="/Account/Login">Login</a>
+        }
+        else
+        {
+            <form method="post" asp-page="/Account/Login" asp-page-handler="Logout">
+                <div class="input-group">
+                    <span>Hello @User.Identity.Name</span>
+                    <button type="submit" class="panel btn-link">Logout</button>
+                </div>
+            </form>
+        }
+        @RenderBody()
+    </div>
+</body>
+</html>
