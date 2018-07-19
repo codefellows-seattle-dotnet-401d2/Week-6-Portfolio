@@ -1,0 +1,11 @@
+﻿h1, h2 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.submitbutton {
+   float: right;
+}
